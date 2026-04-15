@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protección Financiera | Tu salud y tu futuro asegurados</title>
+<meta name="description" content="Planes de retiro, gastos médicos y seguros de vida con Seguros Monterrey. Asesoría personalizada con Andrés Jamit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --azul-primario: #1B4F9B;
+    --azul-secundario: #2E6FC4;
+    --azul-claro: #7EC8E3;
+    --rosa: #F4A8A8;
+    --azul-oscuro: #0D2F5E;
+    --blanco: #FFFFFF;
+    --gris-claro: #F5F7FA;
+    --gris-texto: #4A5568;
+    --borde: #D1DCF0;
+    --sombra: rgba(27, 79, 155, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanco);
+    color: var(--azul-oscuro);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-primario) 50%, var(--azul-secundario) 100%);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 6%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(126,200,227,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,168,168,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    padding: 80px 0;
+    z-index: 1;
+    animation: fadeSlideUp 0.8s ease forwards;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+
+  .logo-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-text strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--blanco);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .logo-text span {
+    font-size: 0.72rem;
+    color: var(--azul-claro);
+    letter-spacing: 0.08em;
+    font-weight: 300;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(126,200,227,0.2);
+    border: 1px solid rgba(126,200,227,0.4);
+    color: var(--azul-claro);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--blanco);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--azul-claro), var(--rosa));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 460px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--blanco);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* FORM CARD */
+  .hero-form-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+    animation: fadeSlideUp 0.8s 0.2s ease both;
+    padding: 60px 0;
+  }
+
+  .form-card {
+    background: var(--blanco);
+    border-radius: 24px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  .form-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    color: var(--azul-primario);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .form-card .form-sub {
+    font-size: 0.82rem;
+    color: #E53E3E;
+    font-weight: 500;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--azul-oscuro);
+    background: var(--gris-claro);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .field input::placeholder { color: #A0AEC0; }
+
+  .field input:focus,
+  .field select:focus {
+    border-color: var(--azul-secundario);
+    box-shadow: 0 0 0 3px rgba(46,111,196,0.12);
+    background: var(--blanco);
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 8px;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--azul-secundario);
+    pointer-events: none;
+    font-size: 0.9rem;
+  }
+
+  .select-wrap select { padding-right: 36px; cursor: pointer; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    color: var(--blanco);
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,79,155,0.35);
+  }
+
+  .btn-submit:active { transform: translateY(0); }
+
+  .form-footer-note {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #A0AEC0;
+    margin-top: 14px;
+  }
+
+  /* SUCCESS STATE */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #48BB78, #38A169);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+  }
+
+  .success-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--azul-primario);
+    margin-bottom: 10px;
+  }
+
+  .success-state p {
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    line-height: 1.6;
+  }
+
+  /* PRODUCTOS */
+  .productos {
+    padding: 100px 6%;
+    background: var(--gris-claro);
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--azul-secundario);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--gris-texto);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto 60px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .producto-card {
+    background: var(--blanco);
+    border-radius: 20px;
+    padding: 36px 30px;
+    border: 1.5px solid var(--borde);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .producto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--azul-primario), var(--azul-claro));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px var(--sombra);
+    border-color: var(--azul-claro);
+  }
+
+  .producto-card:hover::before { opacity: 1; }
+
+  .producto-card.featured {
+    border-color: var(--azul-secundario);
+    box-shadow: 0 12px 32px var(--sombra);
+  }
+
+  .producto-card.featured::before { opacity: 1; }
+
+  .producto-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 22px;
+  }
+
+  .producto-tag {
+    display: inline-block;
+    background: rgba(27,79,155,0.08);
+    color: var(--azul-secundario);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .producto-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .producto-card p {
+    font-size: 0.88rem;
+    color: var(--gris-texto);
+    line-height: 1.7;
+  }
+
+  .producto-beneficios {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .beneficio {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--gris-texto);
+  }
+
+  .beneficio::before {
+    content: '✓';
+    color: var(--azul-secundario);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* COMO FUNCIONA */
+  .como-funciona {
+    padding: 100px 6%;
+    background: var(--blanco);
+  }
+
+  .pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .pasos::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--azul-primario), var(--azul-claro));
+    z-index: 0;
+  }
+
+  .paso {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .paso-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    color: var(--blanco);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 16px rgba(27,79,155,0.3);
+  }
+
+  .paso h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .paso p {
+    font-size: 0.82rem;
+    color: var(--gris-texto);
+    line-height: 1.6;
+  }
+
+  /* ASESOR */
+  .asesor {
+    padding: 100px 6%;
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-primario));
+    text-align: center;
+  }
+
+  .asesor-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .asesor-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--azul-claro), var(--rosa));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto 24px;
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+
+  .asesor h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--blanco);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .asesor .cargo {
+    font-size: 0.85rem;
+    color: var(--azul-claro);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .asesor p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .credenciales {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .credencial {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--blanco);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  /* CTA BOTTOM */
+  .cta-bottom {
+    padding: 80px 6%;
+    background: var(--gris-claro);
+    text-align: center;
+  }
+
+  .cta-bottom h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--azul-oscuro);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .cta-bottom p {
+    color: var(--gris-texto);
+    font-size: 1rem;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,79,155,0.35);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--azul-oscuro);
+    padding: 32px 6%;
+    text-align: center;
+  }
+
+  footer p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+
+  footer a { color: var(--azul-claro); text-decoration: none; }
+
+  /* SPINNER */
+  .spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: var(--blanco);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 60px 5%;
+    }
+    .hero-content { padding: 60px 0 40px; }
+    .hero-form-wrap {
+      justify-content: center;
+      padding: 0 0 60px;
+    }
+    .productos-grid { grid-template-columns: 1fr; }
+    .pasos { grid-template-columns: 1fr 1fr; }
+    .pasos::before { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .pasos { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+  }
+
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-content">
+    <div class="logo-area">
+      <div class="logo-text">
+        <strong>Protección Financiera</strong>
+        <span>Tu salud y tu futuro asegurados</span>
+      </div>
+    </div>
+    <span class="hero-badge">Asesoría Personalizada · Seguros Monterrey</span>
+    <h1>Tu <em>futuro financiero</em><br>merece protección real</h1>
+    <p class="hero-sub">Plan Personal de Retiro, Gastos Médicos Mayores, Seguro de Vida y protección educativa para tus hijos. Asesoría sin costo, sin compromiso.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">+20</span><span class="stat-label">años de respaldo</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">asesoría personalizada</span></div>
+      <div class="stat"><span class="stat-num">Sin costo</span><span class="stat-label">primera consulta</span></div>
+    </div>
+  </div>
+  <div class="hero-form-wrap">
+    <div class="form-card">
+      <div id="form-content">
+        <h2>Calcula tu proyección</h2>
+        <p class="form-sub">Indispensable: Mayor de 18 años con ingresos superiores a $15,000 MXN mensuales</p>
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="edad">Edad</label>
+          <input type="number" id="edad" name="edad" placeholder="18 a 65" min="18" max="65" required>
+        </div>
+        <div class="field">
+          <label for="profesion">Profesión / Ocupación</label>
+          <input type="text" id="profesion" name="profesion" placeholder="Ej. Contador, Ingeniero, Empresario">
+        </div>
+        <div class="field">
+          <label>Teléfono (WhatsApp)</label>
+          <div class="field-row">
+            <div class="select-wrap">
+              <select id="lada" name="lada">
+                <option value="+52">🇲🇽 +52</option>
+                <option value="+1">🇺🇸 +1</option>
+              </select>
+            </div>
+            <input type="tel" id="telefono" name="telefono" placeholder="81 1234 5678" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="interes">Producto de interés</label>
+          <div class="select-wrap">
+            <select id="interes" name="interes" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="PPR - Plan Personal de Retiro">🏦 Plan Personal de Retiro (PPR)</option>
+              <option value="Gastos Médicos Mayores">🏥 Gastos Médicos Mayores</option>
+              <option value="Seguro de Vida">🛡️ Seguro de Vida</option>
+              <option value="Seguro Educativo">🎓 Seguro Educativo para hijos</option>
+              <option value="Más de uno">📋 Más de uno / Quiero asesoría general</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ingresos">Ingresos mensuales</label>
+          <div class="select-wrap">
+            <select id="ingresos" name="ingresos" required>
+              <option value="" disabled selected>Selecciona rango</option>
+              <option value="$15,000 - $25,000 MXN">$15,000 – $25,000 MXN</option>
+              <option value="$25,000 - $50,000 MXN">$25,000 – $50,000 MXN</option>
+              <option value="$50,000 - $100,000 MXN">$50,000 – $100,000 MXN</option>
+              <option value="Más de $100,000 MXN">Más de $100,000 MXN</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-submit" id="btn-submit" onclick="enviarFormulario(event)">
+          <span id="btn-text">Quiero mi proyección gratuita</span>
+          <div class="spinner" id="spinner"></div>
+        </button>
+        <p class="form-footer-note">🔒 Tus datos son 100% confidenciales. Sin spam.</p>
+      </div>
+      <div class="success-state" id="success-state">
+        <div class="success-icon">✓</div>
+        <h3>¡Solicitud recibida!</h3>
+        <p>Andrés Jamit se pondrá en contacto contigo en las próximas horas para presentarte tu proyección personalizada. Revisa tu WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="productos">
+  <p class="section-label">Nuestros productos</p>
+  <h2 class="section-title">Soluciones que protegen lo que más importa</h2>
+  <p class="section-sub">Diseñados para mexicanos con metas claras. Cada plan se adapta a tu etapa de vida y objetivos financieros.</p>
+  <div class="productos-grid">
+    <div class="producto-card featured">
+      <div class="producto-icon">🏦</div>
+      <span class="producto-tag">Más popular</span>
+      <h3>Plan Personal de Retiro</h3>
+      <p>Construye un patrimonio deducible de impuestos para vivir tranquilo cuando decidas dejar de trabajar.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Deducible hasta el 10% de tu ingreso anual ante el SAT</div>
+        <div class="beneficio">Tu dinero crece con rendimientos competitivos</div>
+        <div class="beneficio">Complementa tu AFORE o pensión IMSS</div>
+        <div class="beneficio">Empieza desde $1,500 MXN al mes</div>
+      </div>
+    </div>
+    <div class="producto-card">
+      <div class="producto-icon">🎓</div>
+      <span class="producto-tag">Protección familiar</span>
+      <h3>Seguro Educativo para tus hijos</h3>
+      <p>Si llegara a faltarte, tus hijos tienen garantizada la colegiatura universitaria sin interrupciones.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Colegiatura asegurada aunque ya no estés</div>
+        <div class="beneficio">Cobertura para la universidad</div>
+        <div class="beneficio">Opción de ahorro para tus hijos también</div>
+        <div class="beneficio">Tranquilidad para toda la familia</div>
+      </div>
+    </div>
+    <div class="producto-card">
+      <div class="producto-icon">🏥</div>
+      <span class="producto-tag">Salud</span>
+      <h3>Gastos Médicos Mayores</h3>
+      <p>Protección ante enfermedades o accidentes graves que pueden afectar tu economía familiar.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Hospitalización, cirugías y especialistas</div>
+        <div class="beneficio">Cobertura nacional e internacional</div>
+        <div class="beneficio">Amplia cobertura</div>
+        <div class="beneficio">Red de hospitales de primer nivel</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="como-funciona">
+  <p class="section-label">Proceso</p>
+  <h2 class="section-title">Así de sencillo es empezar</h2>
+  <p class="section-sub">En menos de 48 horas tienes tu proyección personalizada sin costo.</p>
+  <div class="pasos">
+    <div class="paso"><div class="paso-num">1</div><h4>Llena el formulario</h4><p>Toma menos de 2 minutos. Solo necesitas datos básicos.</p></div>
+    <div class="paso"><div class="paso-num">2</div><h4>Andrés te contacta</h4><p>En menos de 24 horas te llama por WhatsApp o teléfono.</p></div>
+    <div class="paso"><div class="paso-num">3</div><h4>Recibe tu proyección</h4><p>Un plan personalizado según tus ingresos y metas reales.</p></div>
+    <div class="paso"><div class="paso-num">4</div><h4>Tú decides</h4><p>Sin presión. Sin compromiso. Solo información clara.</p></div>
+  </div>
+</section>
+<section class="asesor">
+  <div class="asesor-card">
+    <div class="asesor-avatar">👨‍💼</div>
+    <h2>Andrés Jamit</h2>
+    <p class="cargo">Asesor Certificado por la Comisión Nacional de Seguros y Fianzas · Seguros Monterrey · Tu Protección</p>
+    <p>Asesor financiero especializado en planeación patrimonial y protección familiar. Mi misión es ayudarte a tomar decisiones inteligentes con tu dinero hoy, para que tu futuro esté asegurado mañana.</p>
+    <div class="credenciales">
+      <span class="credencial">✓ Certificado CNSF · Seguros Monterrey</span>
+      <span class="credencial">✓ Asesoría sin costo inicial</span>
+      <span class="credencial">✓ Planeación patrimonial</span>
+    </div>
+  </div>
+</section>
+<section class="cta-bottom">
+  <h2>¿Listo para asegurar tu futuro?</h2>
+  <p>Obtén tu proyección personalizada hoy. Completamente gratis, sin compromiso.</p>
+  <a href="#" class="btn-cta" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;">Quiero mi proyección gratuita</a>
+</section>
+<footer>
+  <p>© 2026 Tu Protección · Andrés Jamit · Asesor Certificado Seguros Monterrey<br>
+  Este sitio no recopila información sin consentimiento. Aviso de privacidad disponible bajo solicitud.</p>
+</footer>
+<script>
+
+const APPS_SCRIPT_URL = 'TU_URL_APPS_SCRIPT_AQUI';
+
+async function enviarFormulario(e) {
+  e.preventDefault();
+
+  const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos'];
+  const datos = {};
+  let valido = true;
+
+  campos.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const val = el.value.trim();
+    if (el.required && !val) {
+      el.style.borderColor = '#E53E3E';
+      valido = false;
+    } else {
+      el.style.borderColor = '';
+    }
+    datos[id] = val;
+  });
+
+  datos['lada'] = document.getElementById('lada').value;
+  datos['telefono_completo'] = datos['lada'] + ' ' + datos['telefono'];
+  datos['timestamp'] = new Date().toLocaleString('es-MX', {timeZone: 'America/Monterrey'});
+  datos['origen'] = 'Landing Page tuproteccion.mx';
+
+  if (!valido) {
+    alert('Por favor completa todos los campos obligatorios.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-submit');
+  const btnText = document.getElementById('btn-text');
+  const spinner = document.getElementById('spinner');
+
+  btn.disabled = true;
+  btnText.style.display = 'none';
+  spinner.style.display = 'block';
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    });
+
+    document.getElementById('form-content').style.display = 'none';
+    document.getElementById('success-state').style.display = 'block';
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'form_submit', {
+        event_category: 'Lead',
+        event_label: datos['interes'] || 'General'
+      });
+    }
+
+  } catch (err) {
+    btn.disabled = false;
+    btnText.style.display = 'block';
+    spinner.style.display = 'none';
+    alert('Hubo un error al enviar. Intenta de nuevo o contáctanos directamente.');
+  }
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href="#"]').forEach(a => {
+  a.addEventListener('click', e => e.preventDefault());
+});
+
+</script>
+</body>
+</html>
