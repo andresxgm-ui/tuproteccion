@@ -908,11 +908,11 @@ async function enviarFormulario(e) {
   spinner.style.display = 'block';
 
   try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(datos)
+    // Enviamos como form data via GET para evitar problemas CORS con Apps Script
+    const params = new URLSearchParams(datos).toString();
+    await fetch(APPS_SCRIPT_URL + '?' + params, {
+      method: 'GET',
+      mode: 'no-cors'
     });
 
     document.getElementById('form-content').style.display = 'none';
