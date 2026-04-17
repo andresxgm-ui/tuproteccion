@@ -677,6 +677,10 @@
   }
 
   /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .productos-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
@@ -720,7 +724,7 @@
   <div class="hero-form-wrap">
     <div class="form-card">
       <div id="form-content">
-        <h2>Calcula tu proyección</h2>
+        <h2>Cotiza tu seguro</h2>
         <p class="form-sub">Indispensable: Mayor de 18 años con ingresos superiores a $15,000 MXN mensuales</p>
         <div class="field">
           <label for="nombre">Nombre completo</label>
@@ -759,6 +763,8 @@
               <option value="Gastos Médicos Mayores">🏥 Gastos Médicos Mayores</option>
               <option value="Seguro de Vida">🛡️ Seguro de Vida</option>
               <option value="Seguro Educativo">🎓 Seguro Educativo para hijos</option>
+              <option value="Vida Mujer">💜 Vida Mujer</option>
+              <option value="Hombre Clave">💼 Hombre Clave</option>
               <option value="Más de uno">📋 Más de uno / Quiero asesoría general</option>
             </select>
           </div>
@@ -776,7 +782,7 @@
           </div>
         </div>
         <button class="btn-submit" id="btn-submit" onclick="enviarFormulario(event)">
-          <span id="btn-text">Quiero mi proyección gratuita</span>
+          <span id="btn-text">Cotiza tu seguro</span>
           <div class="spinner" id="spinner"></div>
         </button>
         <p class="form-footer-note">🔒 Tus datos son 100% confidenciales. Sin spam.</p>
@@ -794,6 +800,7 @@
   <h2 class="section-title">Soluciones que protegen lo que más importa</h2>
   <p class="section-sub">Diseñados para mexicanos con metas claras. Cada plan se adapta a tu etapa de vida y objetivos financieros.</p>
   <div class="productos-grid">
+
     <div class="producto-card featured">
       <div class="producto-icon">🏦</div>
       <span class="producto-tag">Más popular</span>
@@ -806,18 +813,7 @@
         <div class="beneficio">Empieza desde $1,500 MXN al mes</div>
       </div>
     </div>
-    <div class="producto-card">
-      <div class="producto-icon">🎓</div>
-      <span class="producto-tag">Protección familiar</span>
-      <h3>Seguro Educativo para tus hijos</h3>
-      <p>Si llegara a faltarte, tus hijos tienen garantizada la colegiatura universitaria sin interrupciones.</p>
-      <div class="producto-beneficios">
-        <div class="beneficio">Colegiatura asegurada aunque ya no estés</div>
-        <div class="beneficio">Cobertura para la universidad</div>
-        <div class="beneficio">Opción de ahorro para tus hijos también</div>
-        <div class="beneficio">Tranquilidad para toda la familia</div>
-      </div>
-    </div>
+
     <div class="producto-card">
       <div class="producto-icon">🏥</div>
       <span class="producto-tag">Salud</span>
@@ -830,6 +826,59 @@
         <div class="beneficio">Red de hospitales de primer nivel</div>
       </div>
     </div>
+
+    <div class="producto-card">
+      <div class="producto-icon">🛡️</div>
+      <span class="producto-tag">Protección</span>
+      <h3>Seguro de Vida</h3>
+      <p>Protege el bienestar económico de tu familia ante cualquier imprevisto, garantizando su estabilidad futura.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Suma asegurada desde el primer día</div>
+        <div class="beneficio">Cobertura por fallecimiento e invalidez</div>
+        <div class="beneficio">Beneficiarios a tu elección</div>
+        <div class="beneficio">Primas accesibles adaptadas a tu perfil</div>
+      </div>
+    </div>
+
+    <div class="producto-card">
+      <div class="producto-icon">🎓</div>
+      <span class="producto-tag">Protección familiar</span>
+      <h3>Seguro Educativo para tus hijos</h3>
+      <p>Si llegara a faltarte, tus hijos tienen garantizada la colegiatura universitaria sin interrupciones.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Colegiatura asegurada aunque ya no estés</div>
+        <div class="beneficio">Cobertura para la universidad</div>
+        <div class="beneficio">Opción de ahorro para tus hijos también</div>
+        <div class="beneficio">Tranquilidad para toda la familia</div>
+      </div>
+    </div>
+
+    <div class="producto-card">
+      <div class="producto-icon">💜</div>
+      <span class="producto-tag">Exclusivo mujeres</span>
+      <h3>Vida Mujer</h3>
+      <p>Un seguro diseñado especialmente para las necesidades de protección y salud de la mujer en cada etapa de su vida.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Cobertura por enfermedades femeninas graves</div>
+        <div class="beneficio">Protección en maternidad y salud reproductiva</div>
+        <div class="beneficio">Seguro de vida incluido</div>
+        <div class="beneficio">Pensado para la mujer moderna e independiente</div>
+      </div>
+    </div>
+
+    <div class="producto-card">
+      <div class="producto-icon">💼</div>
+      <span class="producto-tag">Empresarial</span>
+      <h3>Hombre Clave</h3>
+      <p>Póliza estratégica para empresas que protege financieramente ante el fallecimiento o invalidez de personal esencial, garantizando la continuidad del negocio.</p>
+      <div class="producto-beneficios">
+        <div class="beneficio">Cubre pérdidas económicas por ausencia del personal clave</div>
+        <div class="beneficio">Primas 100% deducibles bajo requisitos fiscales</div>
+        <div class="beneficio">Garantiza la continuidad operativa del negocio</div>
+        <div class="beneficio">Protege el capital humano indispensable</div>
+      </div>
+    </div>
+
   </div>
 </section>
 <section class="como-funciona">
@@ -859,7 +908,7 @@
 <section class="cta-bottom">
   <h2>¿Listo para asegurar tu futuro?</h2>
   <p>Obtén tu proyección personalizada hoy. Completamente gratis, sin compromiso.</p>
-  <a href="#" class="btn-cta" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;">Quiero mi proyección gratuita</a>
+  <a href="#" class="btn-cta" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;">Cotiza tu seguro</a>
 </section>
 <footer>
   <p>© 2026 Tu Protección · Andrés Jamit · Asesor Certificado Seguros Monterrey<br>
