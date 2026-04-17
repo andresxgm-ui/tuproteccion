@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WC4M5W88');</script>
+<!-- End Google Tag Manager -->
 <title>Tu Protección | Tu salud y tu futuro asegurados</title>
 <meta name="description" content="Planes de retiro, gastos médicos y seguros de vida con Seguros Monterrey. Asesoría personalizada con Andrés Jamit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
   :root {
@@ -27,7 +33,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background: var(--blanco);
     color: var(--azul-oscuro);
     overflow-x: hidden;
@@ -37,14 +43,12 @@
   .hero {
     background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-primario) 50%, var(--azul-secundario) 100%);
     min-height: 100vh;
-    min-height: 100svh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 0 6%;
     position: relative;
     overflow: hidden;
-    contain: layout style;
   }
 
   .hero::before {
@@ -74,6 +78,7 @@
   .hero-content {
     padding: 80px 0;
     z-index: 1;
+    animation: fadeSlideUp 0.8s ease forwards;
   }
 
   .logo-area {
@@ -181,6 +186,7 @@
     justify-content: flex-end;
     align-items: center;
     z-index: 1;
+    animation: fadeSlideUp 0.8s 0.2s ease both;
     padding: 60px 0;
   }
 
@@ -705,6 +711,10 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WC4M5W88"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <section class="hero">
   <div class="hero-content">
     <div class="logo-area">
@@ -714,7 +724,7 @@
       </div>
     </div>
     <span class="hero-badge">Asesoría Personalizada · Seguros Monterrey</span>
-    <h1 elementtiming="lcp-hero">Tu <em>futuro financiero</em><br>merece protección real</h1>
+    <h1>Tu <em>futuro financiero</em><br>merece protección real</h1>
     <p class="hero-sub">Plan Personal de Retiro, Gastos Médicos Mayores, Seguro de Vida y protección educativa para tus hijos. Asesoría sin costo, sin compromiso.</p>
     <div class="hero-stats">
       <div class="stat"><span class="stat-num">+20</span><span class="stat-label">años de respaldo</span></div>
@@ -982,6 +992,15 @@ async function enviarFormulario(e) {
 
     document.getElementById('form-content').style.display = 'none';
     document.getElementById('success-state').style.display = 'block';
+
+    // GTM — evento de conversión
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_formulario',
+      producto: datos['interes'] || 'General',
+      ingresos: datos['ingresos'] || '',
+      origen: 'tuproteccion.mx'
+    });
 
     if (typeof gtag === 'function') {
       gtag('event', 'form_submit', {
