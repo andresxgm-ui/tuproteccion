@@ -10,6 +10,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WC4M5W88');</script>
 <!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18099881565"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18099881565');
+</script>
 <title>Tu Protección | Tu salud y tu futuro asegurados</title>
 <meta name="description" content="Planes de retiro, gastos médicos y seguros de vida con Seguros Monterrey. Asesoría personalizada con Andrés Jamit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1003,6 +1011,13 @@ async function enviarFormulario(e) {
       producto: datos['interes'] || 'General',
       ingresos: datos['ingresos'] || '',
       origen: 'tuproteccion.mx'
+    });
+
+    // Google Ads — conversión
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18099881565/4JK5CPPljZ4cEN2M2bZD',
+      'value': 1.0,
+      'currency': 'MXN'
     });
 
     if (typeof gtag === 'function') {
