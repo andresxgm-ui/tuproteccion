@@ -801,6 +801,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </select>
           </div>
         </div>
+        <div class="field">
+          <label for="presupuesto">¿Cuánto puedes invertir al mes en tu seguro?</label>
+          <div class="select-wrap">
+            <select id="presupuesto" name="presupuesto" required>
+              <option value="" disabled selected>Ingresa tu edad primero</option>
+            </select>
+          </div>
+        </div>
         <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
           <label for="website">No llenar</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -813,8 +821,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="success-state" id="success-state">
         <div class="success-icon">✓</div>
-        <h3>¡Recibimos tu mensaje!</h3>
-        <p>Gracias por tu interés. Andrés Jamit se pondrá en contacto contigo muy pronto con tu proyección personalizada. Revisa tu WhatsApp y correo.</p>
+        <h3>¡Tu solicitud fue recibida!</h3>
+        <p>Revisa tu email ahora. Te enviamos información importante sobre tu cotización personalizada.</p>
       </div>
     </div>
   </div>
@@ -948,7 +956,7 @@ async function enviarFormulario(e) {
   // Honeypot — si está lleno es bot
   if (document.getElementById('website').value !== '') return;
 
-  const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos'];
+  const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos','presupuesto'];
   const datos = {};
   let valido = true;
 
@@ -1046,6 +1054,49 @@ async function enviarFormulario(e) {
 document.querySelectorAll('a[href="#"]').forEach(a => {
   a.addEventListener('click', e => e.preventDefault());
 });
+
+// Tiers dinámicos por edad
+const TIERS = [
+  { value: 'Tier A - $1,500 a $2,000 MXN/mes', label: '$1,500 – $2,000 / mes', edadMin: 18 },
+  { value: 'Tier B - $2,000 a $2,500 MXN/mes', label: '$2,000 – $2,500 / mes', edadMin: 31 },
+  { value: 'Tier C - $2,500 a $3,000 MXN/mes', label: '$2,500 – $3,000 / mes', edadMin: 35 },
+  { value: 'Tier D - $3,000 a $3,500 MXN/mes', label: '$3,000 – $3,500 / mes', edadMin: 40 },
+  { value: 'Tier E - $3,500 a $4,000 MXN/mes', label: '$3,500 – $4,000 / mes', edadMin: 45 },
+  { value: 'Tier F - $4,000 a $4,500 MXN/mes', label: '$4,000 – $4,500 / mes', edadMin: 50 },
+  { value: 'Tier G - $4,500 a $5,000 MXN/mes', label: '$4,500 – $5,000 / mes', edadMin: 55 },
+  { value: 'Tier H - Más de $5,000 MXN/mes',   label: 'Más de $5,000 / mes',   edadMin: 60 }
+];
+
+function actualizarTiers() {
+  const edad = parseInt(document.getElementById('edad').value);
+  const select = document.getElementById('presupuesto');
+  const valorActual = select.value;
+
+  select.innerHTML = '<option value="" disabled selected>Selecciona una opción</option>';
+
+  if (isNaN(edad) || edad < 18) {
+    select.innerHTML = '<option value="" disabled selected>Ingresa tu edad primero</option>';
+    return;
+  }
+
+  // Encontrar el tier mínimo que aplica para esta edad
+  // (el tier con edadMin más alta que sea <= edad)
+  let tierMinIdx = 0;
+  for (let i = 0; i < TIERS.length; i++) {
+    if (edad >= TIERS[i].edadMin) tierMinIdx = i;
+  }
+  const disponibles = TIERS.slice(tierMinIdx);
+  disponibles.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.value;
+    opt.textContent = t.label;
+    if (t.value === valorActual) opt.selected = true;
+    select.appendChild(opt);
+  });
+}
+
+document.getElementById('edad').addEventListener('input', actualizarTiers);
+document.getElementById('edad').addEventListener('change', actualizarTiers);
 
 </script>
 </body>
