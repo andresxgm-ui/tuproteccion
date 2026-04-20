@@ -801,6 +801,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </select>
           </div>
         </div>
+        <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+          <label for="website">No llenar</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <button class="btn-submit" id="btn-submit" onclick="enviarFormulario(event)">
           <span id="btn-text">Cotiza tu seguro</span>
           <div class="spinner" id="spinner"></div>
@@ -940,6 +944,9 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhugQ9aoL8BsjU
 
 async function enviarFormulario(e) {
   e.preventDefault();
+
+  // Honeypot — si está lleno es bot
+  if (document.getElementById('website').value !== '') return;
 
   const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos'];
   const datos = {};
