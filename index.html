@@ -3,20 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WC4M5W88');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18099881565"></script>
+<!-- Google Tag Manager — defer para no bloquear render -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18099881565');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
 </script>
 <title>Tu Protección | Tu salud y tu futuro asegurados</title>
 <meta name="description" content="Planes de retiro, gastos médicos y seguros de vida con Seguros Monterrey. Asesoría personalizada con Andrés Jamit.">
@@ -1070,34 +1060,48 @@ const TIERS = [
 function actualizarTiers() {
   const edad = parseInt(document.getElementById('edad').value);
   const select = document.getElementById('presupuesto');
-  const valorActual = select.value;
-
-  select.innerHTML = '<option value="" disabled selected>Selecciona una opción</option>';
 
   if (isNaN(edad) || edad < 18) {
     select.innerHTML = '<option value="" disabled selected>Ingresa tu edad primero</option>';
     return;
   }
 
-  // Encontrar el tier mínimo que aplica para esta edad
-  // (el tier con edadMin más alta que sea <= edad)
   let tierMinIdx = 0;
   for (let i = 0; i < TIERS.length; i++) {
     if (edad >= TIERS[i].edadMin) tierMinIdx = i;
   }
   const disponibles = TIERS.slice(tierMinIdx);
+  const fragment = document.createDocumentFragment();
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.textContent = 'Selecciona una opción';
+  fragment.appendChild(placeholder);
   disponibles.forEach(t => {
     const opt = document.createElement('option');
     opt.value = t.value;
     opt.textContent = t.label;
-    if (t.value === valorActual) opt.selected = true;
-    select.appendChild(opt);
+    fragment.appendChild(opt);
   });
+  select.innerHTML = '';
+  select.appendChild(fragment);
 }
 
 document.getElementById('edad').addEventListener('input', actualizarTiers);
 document.getElementById('edad').addEventListener('change', actualizarTiers);
 
+</script>
+<!-- GTM y Google Ads diferidos — no bloquean render -->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=AW-18099881565"></script>
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WC4M5W88');
+gtag('js', new Date());
+gtag('config', 'AW-18099881565');
 </script>
 </body>
 </html>
