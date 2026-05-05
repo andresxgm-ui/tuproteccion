@@ -1032,7 +1032,12 @@ async function enviarFormulario(e) {
       `*Presupuesto mensual:* ${datos['presupuesto'] || ''}\n` +
       `*Teléfono:* ${datos['telefono'] || ''}\n\n` +
       `Quisiera recibir mi asesoría para ver mi cotización`;
-    document.getElementById('whatsapp-btn').href = `https://wa.me/525539969069?text=${encodeURIComponent(msgWA)}`;
+    const encodedMsg = encodeURIComponent(msgWA);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const waURL = isMobile
+      ? `whatsapp://send?phone=525539969069&text=${encodedMsg}`
+      : `https://wa.me/525539969069?text=${encodedMsg}`;
+    document.getElementById('whatsapp-btn').href = waURL;
 
     // GTM — evento de conversión
     window.dataLayer = window.dataLayer || [];
