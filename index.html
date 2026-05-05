@@ -809,12 +809,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </select>
           </div>
         </div>
+        <div class="field">
+          <label for="intencion">¿Cuál es tu intención con este seguro?</label>
+          <div class="select-wrap">
+            <select id="intencion" name="intencion" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Sí, quiero contratar pronto">✅ Sí, quiero contratar pronto</option>
+              <option value="Lo estoy evaluando">🤔 Lo estoy evaluando</option>
+              <option value="Solo me estoy informando">👀 Solo me estoy informando</option>
+            </select>
+          </div>
+        </div>
         <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
           <label for="website">No llenar</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
         <button class="btn-submit" id="btn-submit" onclick="enviarFormulario(event)">
-          <span id="btn-text">Cotiza tu seguro</span>
+          <span id="btn-text">Quiero asesoría para cotización</span>
           <div class="spinner" id="spinner"></div>
         </button>
         <p class="form-footer-note">🔒 Tus datos son 100% confidenciales. Sin spam.</p>
@@ -924,7 +935,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="pasos">
     <div class="paso"><div class="paso-num">1</div><h4>Llena el formulario</h4><p>Toma menos de 2 minutos. Solo necesitas datos básicos.</p></div>
     <div class="paso"><div class="paso-num">2</div><h4>Andrés te contacta</h4><p>En menos de 24 horas te llama por WhatsApp o teléfono.</p></div>
-    <div class="paso"><div class="paso-num">3</div><h4>Recibe tu proyección</h4><p>Un plan personalizado según tus ingresos y metas reales.</p></div>
+    <div class="paso"><div class="paso-num">3</div><h4>Agenda tu llamada</h4><p>No mandamos cotizaciones por mensajes de WhatsApp — agendar una llamada es completamente necesario. Tu asesoría es 100% gratuita y sin compromiso.</p></div>
     <div class="paso"><div class="paso-num">4</div><h4>Tú decides</h4><p>Sin presión. Sin compromiso. Solo información clara.</p></div>
   </div>
 </section>
@@ -960,7 +971,7 @@ async function enviarFormulario(e) {
   // Honeypot — si está lleno es bot
   if (document.getElementById('website').value !== '') return;
 
-  const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos','presupuesto'];
+  const campos = ['nombre','email','edad','profesion','telefono','interes','ingresos','presupuesto','intencion'];
   const datos = {};
   let valido = true;
 
@@ -1030,7 +1041,8 @@ async function enviarFormulario(e) {
       `*Producto de interés:* ${datos['interes'] || ''}\n` +
       `*Ingresos mensuales:* ${datos['ingresos'] || ''}\n` +
       `*Presupuesto mensual:* ${datos['presupuesto'] || ''}\n` +
-      `*Teléfono:* ${datos['telefono'] || ''}\n\n` +
+      `*Teléfono:* ${datos['telefono'] || ''}\n` +
+      `*Intención:* ${datos['intencion'] || ''}\n\n` +
       `Quisiera recibir mi asesoría para ver mi cotización`;
     const encodedMsg = encodeURIComponent(msgWA);
     const waURL = `https://api.whatsapp.com/send/?phone=525539969069&text=${encodedMsg}&type=phone_number&app_absent=0`;
